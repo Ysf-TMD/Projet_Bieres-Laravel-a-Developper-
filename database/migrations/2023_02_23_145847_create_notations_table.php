@@ -19,7 +19,7 @@ return new class extends Migration
              $table->tinyInteger("note");
             $table->datetime("add_at");
             $table->timestamps();
-            $table->primary(["user_id","biere_id"]);
+//            $table->primary(["user_id","biere_id"]);
         });
     }
 

@@ -2,9 +2,15 @@
 
 @section('content')
 
+
     <div class="page-header header-filter clear-filter green-filter " data-parallax=
     "true"
          style="background-image: url('{{url('/img/houblon-alsace.jpg')}}');">
+        @if($message = Session::get("success"))
+            <div class=" alert alert-success">
+                {{$message}}
+            </div>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">

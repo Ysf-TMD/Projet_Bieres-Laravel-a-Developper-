@@ -31,14 +31,14 @@
                                         <button type="submit" class="btn btn-info" role="button">
                                             <span class="far fa-edit fa-2x " aria-hidden="true">Show</span>
                                         </button>
-                                    </form>
+
                                     <a href="#" class="btn btn-warning" role="button">
                                         <span class="far fa-edit fa-2x " aria-hidden="true">Modifier</span>
                                     </a>
                                     <a href="#" class="btn btn-danger" role="button">
                                         <span  aria-hidden="true">Supprimer</span>
                                     </a>
-
+                                    </form>
                                 </div>
                             </td>
                         </tr>

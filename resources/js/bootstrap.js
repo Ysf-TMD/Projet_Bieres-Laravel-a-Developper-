@@ -1,4 +1,4 @@
-//import _ from 'lodash';
+
 window._ = require("lodash");
 
 import 'bootstrap';

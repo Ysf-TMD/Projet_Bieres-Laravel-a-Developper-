@@ -6,6 +6,7 @@ use App\Models\Biere;
 
 
 use App\Models\Notation;
+use App\Models\Register;
 use Database\Seeders\BieresTableSeeder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -43,25 +44,23 @@ class BieresController extends Controller
     {
        return view("notation.component",compact("notations"));
     }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): Response
+    public function storeUser(Request $req )
     {
-        //
-    }
+        $req->validate([
+            "nom"=>"required",
+            "email"=>"required",
+            "password"=> "required"
+        ]);
+        $user= new Register([
+            "nom"=>$req->get("nom"),
+            "email"=>$req->get("email"),
+            "password"=>$req->get("password"),
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
-    {
-        //
-    }
+        ]);
+        $user->save();
+        return redirect("/accueil")->with("success","User Ajouter Avec Success");
 
-    /**
-     * Display the specified resource.
-     */
+    }
     public function show($id)
     {
         $biere=Biere::find($id);
@@ -78,7 +77,7 @@ class BieresController extends Controller
      */
     public function edit(string $id): Response
     {
-        //
+        //formulaire de modification
     }
 
     /**
@@ -86,7 +85,7 @@ class BieresController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        //action de modification
     }
 
     /**
@@ -94,6 +93,23 @@ class BieresController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
-        //
+        //suppression de bierres delete() + redirection
+    }
+    public function Auth( )
+    {
+
+        echo "<pre>";
+
+        $id = $_POST["email"];
+        $user = Register::find($id);
+        print_r($user);
+        /*if($user)
+        {
+            return redirect("/accueil")->with("message","Bienvenu".$id->nom);
+        }
+        else
+        {
+            return redirect("/login")->with("message","Email ou mot de passe incorrect ") ;
+        }*/
     }
 }

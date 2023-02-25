@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::group([],function()
 {
     Route::get("/",[\App\Http\Controllers\BieresController::class , "index"]);
-    Route::get("/accueil",[\App\Http\Controllers\BieresController::class , "index"])->name("accueil");
-    Route::get("/register",[\App\Http\Controllers\BieresController::class , "register"])->name("register");
+//    Route::get("/accueil",[\App\Http\Controllers\BieresController::class , "index"])->name("accueil");
+//    Route::get("/register",[\App\Http\Controllers\BieresController::class , "register"])->name("register");
     Route::get("/apropos",[\App\Http\Controllers\BieresController::class , "apropos"]);
     Route::get("/contact",[\App\Http\Controllers\BieresController::class , "contact"]);
     Route::get("/show/{id}",[\App\Http\Controllers\BieresController::class , "show"]);
@@ -26,4 +26,16 @@ Route::group([],function()
     /*Route::match(["get","post"],[\App\Http\Controllers\BieresController::class , "show"])->name("show");*/
     Route::get("/list",[\App\Http\Controllers\BieresController::class , "list"])->name("list");
     Route::match(["get","post"],"/login",[\App\Http\Controllers\BieresController::class , "login"]);
+    Route::match(["get","post"],"/register",[\App\Http\Controllers\BieresController::class , "register"]);
+    Route::match(["get","post"],"/accueil",[\App\Http\Controllers\BieresController::class , "index"]);
+    Route::post("/store" , [\App\Http\Controllers\BieresController::class ,"storeUser"])->name("storeUser");
+    Route::post("/Auth" , [\App\Http\Controllers\BieresController::class ,"Auth"])->name("Auth");
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
